@@ -11,7 +11,10 @@ puppeteer.launch(puppeteerConfig).then(async browser => {
   await page.setViewport({ width: 1366, height: 768 })
   await page.goto(EVENT_URL);
   const [noTicketAvailableElement] = await page.$x("//h3[contains(., 'No tickets available')]");
-
+  const [loginButton] = await page.$x("//button[contains(., 'Login')]");
+  if (loginButton) {
+    console.log("🚨 warning: the browser is currently not logged in, you may want to login on Google Chrome manually to make sure it works")
+  }
   if (noTicketAvailableElement) {
     console.log('No tickets available 😢\n');
     return await browser.close();
@@ -52,7 +55,7 @@ puppeteer.launch(puppeteerConfig).then(async browser => {
 
         if (hadToLogin) {
           if (!totalPriceElement) {
-            console.log('Facebook login failed 😭')
+            console.log('Facebook login failed 😭 Make sur you are connected to Facebook en Google Chrome')
             return browser.close();
           }
           console.log('Login went fine')
