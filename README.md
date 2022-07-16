@@ -40,32 +40,9 @@ yarn
 3. Open Google Chrome and login to your Facebook account. If asked, tell Facebook to remember this browser.
 4. Quit Chrome entirely
 5. In the puppeteerConfig variable, change the `headless` value to `false` in order to see if the bot is working. You may want to use an event for which there are tickets available to see it reach the final step of payment. The bot will not make an actual purchase as long as you havent set the constant `IS_FOR_REAL` to `true`.
-6. Launch the bot with the following command 
+6. Launch the bot with the following command
 ```bash
 node script.js
 ```
 7. If the bot reaches the last payment with your test ticket, you can now replace the `EVENT_URL` with the desired event and set the `IS_FOR_REAL` variable to `true`.
 8. You can now setup a [crontab](https://crontab.guru/) to have the bot run every minute (for example).
-
-### Run the bot every 30 seconds (Mac OS)
-
-1. Type 
-```bash
-crontab -e
-```
-2. This should open vim in your Terminal. Type "i" to edit the text
-3. Copy the following crontab jobs:
-```
-* * * * * source /Users/admin/.zshrc && node /Users/admin/ticketswoop/script.js >> /Users/admin/ticketswoop/logs.txt 2>&1
-* * * * * (sleep 30; source /Users/admin/.zshrc && node /Users/admin/ticketswoop/script.js >> /Users/admin/ticketswoop/logs.txt 2>&1)
-```
-4. Replace the zshrc or bashrc source with yours
-   Replace the path of the script with yours
-   Don't forget to edit both lines.
-5. Press Escape and then type ":wq" and Enter.
-6. Mac OS may ask you to confirm that you want to install new jobs, click yes.
-7. You can now run the following command to see the logs of the bot:
-```bash
-tail -f logs.txt
-```
-8. Once the bot managed to buy the ticket you wanted, don't forget to run crontab -e again and to erase the lines. Otherwise it will keep on running.
