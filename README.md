@@ -1,3 +1,5 @@
+⚠️ This repository is now deprecated as it doesn't work anymore with the latest Ticketswap UI
+
 # Ticketswoop
 
 Ticketswoop is a puppeteer-based bot to buy tickets on ticketswap when they are too difficult to buy by only relying on availability alerts.
